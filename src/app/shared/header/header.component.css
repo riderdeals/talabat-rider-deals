@@ -1,0 +1,73 @@
+
+/* header.html CSS START */
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
+
+    background-color: var(--header-bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  .header .sign-in {
+    color: var(--main-txt-color-white);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  /* header.html CSS END */
+
+
+  .back-button {
+    background: none;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: var(--main-txt-color-white); 
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-button:hover {
+    background: none;
+    background-color: transparent;
+    color: var(--text-color-brown);
+}
+
+.back-button i {
+  font-size: 28px;
+}
+
+
+  
+@media (max-width: 480px) {
+
+  /* header.html CSS START */
+
+  .logo img {
+      height: 30px;
+  }
+
+  .back-button i , .back-button {
+    font-size: 20px;
+  }
+
+
+/* header.html CSS END */
+
+
+
+
+}

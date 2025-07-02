@@ -1,0 +1,68 @@
+<div class="hotel-card-wrapper">
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <div class="search-input-wrapper">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="onSearchTermChange()" 
+        placeholder="Search for restaurants..."
+        class="search-input"
+      />
+    </div>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div *ngIf="isLoading" class="loading-container">
+    <img [src]="loaderImage" alt="Searching..." class="loader-gif" />
+    <p>Loading restaurants...</p>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage && !isLoading" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- No results message -->
+  <div *ngIf="filteredHotelCards.length === 0 && !isLoading && !errorMessage" class="no-results">
+    <p>No restaurants found..!</p>
+  </div>
+
+  <!-- Hotel Cards -->
+  <div class="card" *ngFor="let card of filteredHotelCards">
+    <div class="card-img">
+      <img [src]="card.image" alt="Restaurant Image" class="logo" height="500" width="500" />
+    </div>
+    <div class="card-content">
+      <h3>{{ card.restaurant_name }}</h3>
+      <p>{{ card.deals }}</p>
+    </div>
+
+    <div class="user-action-area">
+      <button (click)="openModal(card)">
+        Get QR Code
+      </button>
+      <button (click)="openMenu(card.menu)">
+        Get Menu
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div *ngIf="isModalOpen" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2 class="hotel-name-qr">
+      <strong>{{ selectedHotelName }}</strong>
+    </h2>
+    <p class="deal-qr">
+      <strong>{{ selectedHotelDeal }}</strong>
+    </p>
+    <div class="qr-img">
+      <img [src]="qrCodeImage" alt="QR Code" class="qr-code" />
+    </div>
+    <button (click)="closeModal()" class="back-to-rest-btn">Back to Restaurants</button>
+  </div>
+</div>

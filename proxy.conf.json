@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://talabat-backend-filmy.ondigitalocean.app",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  

@@ -1,0 +1,32 @@
+<div class="home-page-wrapper">
+  <!-- Loader -->
+  <div *ngIf="isLoading" class="loader-overlay">
+    <p>Ride with us to find Special deals for You..!</p>
+    <img src="/images/home/bikerider.gif" alt="Loading..." class="loader-gif">
+  </div>
+
+  <div *ngIf="!isLoading">
+    <section class="hero">
+      <img [src]="heroImage.src" [alt]="heroImage.alt" class="hero-image">
+    </section>
+  </div>
+
+  <section class="categories">
+    <div class="category-card" *ngFor="let category of categories">
+      <div class="category-image">
+        <img [src]="category.image" [alt]="category.alt">
+      </div>
+      <div class="category-content">
+        <div class="title-content">
+          <h2>{{ category.title }}</h2>
+          <h3 class="soonn-text"> &nbsp;{{ category.label }}</h3>
+        </div>
+        <p>{{ category.description }}</p>
+        <a [routerLink]="category.isActive ? ['/hotel-list'] : []" 
+           (click)="handleCategoryClick(category, $event)">
+          <button class="get-it-btn">GET IT</button>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
